@@ -1,0 +1,7 @@
+# How to load data from Google Drive into CoLab
+
+from google.colab import drive
+drive.mount('/content/drive') 
+
+dataset = pd.read_excel("/content/drive/MyDrive/Data Science/Folds5x2_pp.xlsx")
+# /content/drive/MyDrive/Data Science/Folds5x2_pp.xlsx

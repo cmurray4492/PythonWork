@@ -1,0 +1,48 @@
+# this will help in making the Python code more structured automatically (good coding practice)
+#%load_ext nb_black
+
+import warnings
+
+warnings.filterwarnings("ignore")
+from statsmodels.tools.sm_exceptions import ConvergenceWarning
+
+warnings.simplefilter("ignore", ConvergenceWarning)
+
+# Libraries to help with reading and manipulating data
+
+import pandas as pd
+import numpy as np
+
+# Library to split data
+from sklearn.model_selection import train_test_split
+
+# libaries to help with data visualization
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Removes the limit for the number of displayed columns
+pd.set_option("display.max_columns", None)
+# Sets the limit for the number of displayed rows
+pd.set_option("display.max_rows", 200)
+
+
+# To build model for prediction
+import statsmodels.stats.api as sms
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+import statsmodels.api as sm
+from statsmodels.tools.tools import add_constant
+from sklearn.linear_model import LogisticRegression
+
+
+# To get diferent metric scores
+from sklearn.metrics import (
+    f1_score,
+    accuracy_score,
+    recall_score,
+    precision_score,
+    confusion_matrix,
+    roc_auc_score,
+    ConfusionMatrixDisplay,
+    precision_recall_curve,
+    roc_curve,
+)
