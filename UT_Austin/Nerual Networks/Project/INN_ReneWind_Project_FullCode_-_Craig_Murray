@@ -1,0 +1,548 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "9EaJ8AGwpM-2"
+   },
+   "source": [
+    "# **Problem Statement**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "x3-QehJxbp0t"
+   },
+   "source": [
+    "## Business Context"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "7DoY1AHZfMF1"
+   },
+   "source": [
+    "Renewable energy sources play an increasingly important role in the global energy mix, as the effort to reduce the environmental impact of energy production increases.\n",
+    "\n",
+    "Out of all the renewable energy alternatives, wind energy is one of the most developed technologies worldwide. The U.S Department of Energy has put together a guide to achieving operational efficiency using predictive maintenance practices.\n",
+    "\n",
+    "Predictive maintenance uses sensor information and analysis methods to measure and predict degradation and future component capability. The idea behind predictive maintenance is that failure patterns are predictable and if component failure can be predicted accurately and the component is replaced before it fails, the costs of operation and maintenance will be much lower.\n",
+    "\n",
+    "The sensors fitted across different machines involved in the process of energy generation collect data related to various environmental factors (temperature, humidity, wind speed, etc.) and additional features related to various parts of the wind turbine (gearbox, tower, blades, break, etc.)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "4p9zp6bHfPOY"
+   },
+   "source": [
+    "## Objective"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "eu7YIw90fRdW"
+   },
+   "source": [
+    "“ReneWind” is a company working on improving the machinery/processes involved in the production of wind energy using machine learning and has collected data of generator failure of wind turbines using sensors. They have shared a ciphered version of the data, as the data collected through sensors is confidential (the type of data collected varies with companies). Data has 40 predictors, 20000 observations in the training set and 5000 in the test set.\n",
+    "\n",
+    "The objective is to build various classification models, tune them, and find the best one that will help identify failures so that the generators could be repaired before failing/breaking to reduce the overall maintenance cost.\n",
+    "The nature of predictions made by the classification model will translate as follows:\n",
+    "\n",
+    "- True positives (TP) are failures correctly predicted by the model. These will result in repairing costs.\n",
+    "- False negatives (FN) are real failures where there is no detection by the model. These will result in replacement costs.\n",
+    "- False positives (FP) are detections where there is no failure. These will result in inspection costs.\n",
+    "\n",
+    "It is given that the cost of repairing a generator is much less than the cost of replacing it, and the cost of inspection is less than the cost of repair.\n",
+    "\n",
+    "“1” in the target variables should be considered as “failure” and “0” represents “No failure”."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "XPeJAS5bfUOj"
+   },
+   "source": [
+    "## Data Description"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "P4ns9KiyfVsW"
+   },
+   "source": [
+    "The data provided is a transformed version of the original data which was collected using sensors.\n",
+    "\n",
+    "- Train.csv - To be used for training and tuning of models.\n",
+    "- Test.csv - To be used only for testing the performance of the final best model.\n",
+    "\n",
+    "Both the datasets consist of 40 predictor variables and 1 target variable."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "v_-uuGqH-qTt"
+   },
+   "source": [
+    "# **Importing necessary libraries**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "id": "s5w1NSScjjiW"
+   },
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import pandas as pd\n",
+    "import matplotlib.pyplot as plt\n",
+    "import seaborn as sns\n",
+    "import time\n",
+    "\n",
+    "from sklearn.model_selection import train_test_split\n",
+    "from sklearn.preprocessing import LabelEncoder, OneHotEncoder,StandardScaler\n",
+    "from sklearn.impute import SimpleImputer\n",
+    "from sklearn.metrics import confusion_matrix\n",
+    "from sklearn.metrics import confusion_matrix, f1_score,accuracy_score, recall_score, precision_score, classification_report\n",
+    "\n",
+    "import tensorflow as tf\n",
+    "from tensorflow.keras.models import Sequential\n",
+    "from tensorflow.keras.layers import Dense, Input, Dropout,BatchNormalization\n",
+    "from tensorflow.keras import backend\n",
+    "\n",
+    "import warnings\n",
+    "warnings.filterwarnings(\"ignore\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "xxhpZv9y-qTw"
+   },
+   "source": [
+    "# **Loading the Data**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "ZwejMQj9jlrK"
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "4cVx5kZHbp02"
+   },
+   "source": [
+    "# **Data Overview**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "J6lzvHKCbp06"
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "DhPuzWO7hmV8"
+   },
+   "source": [
+    "# **Exploratory Data Analysis**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "Lv7Bs8aUbp07"
+   },
+   "source": [
+    "## Univariate analysis"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "5rupsM4sbp08"
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "lRrYccqLJKXi"
+   },
+   "source": [
+    "## Bivariate Analysis"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "kL32Bf4rJO1F"
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "Bp8vC9MZbp09"
+   },
+   "source": [
+    "# **Data Preprocessing**"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "C-xgnTbGb4CY"
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "OzOa9FGA6WtG"
+   },
+   "source": [
+    "# **Model Building**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "czwxDIZNccQL"
+   },
+   "source": [
+    "## Model Evaluation Criterion"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "l2ORUgmUjDZC"
+   },
+   "source": [
+    "Write down the model evaluation criterion with rationale"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "4fI98GOV0pTY"
+   },
+   "source": [
+    "## Initial Model Building (Model 0)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "0usUom8nZOYZ"
+   },
+   "source": [
+    "- Let's start with a neural network consisting of\n",
+    "  - just one hidden layer\n",
+    "  - activation function of ReLU\n",
+    "  - SGD as the optimizer"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "foiSZUcHKFp6"
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "2tlVEbIWKb6T"
+   },
+   "source": [
+    "# **Model Performance Improvement**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "grQ6pRK1WZtr"
+   },
+   "source": [
+    "## Model 1"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "SfnoGNrmknOd"
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "iQhdyBg0OJWQ"
+   },
+   "source": [
+    "## Model 2"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "cE-wWumtWEpx"
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "83ryNh6qVVPm"
+   },
+   "source": [
+    "## Model 3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "swQ14MhSRwCc"
+   },
+   "source": [
+    "As we have are dealing with an imbalance in class distribution, we should also be using class weights to allow the model to give proportionally more importance to the minority class."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "_7indJ37kx6e"
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "dPAuEVDzX0qL"
+   },
+   "source": [
+    "## Model 4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "ydPkh3AdgWRU"
+   },
+   "source": [
+    "Since we have used only SGD optimizer till now, let's use another kind of optimizer and observe its impact on the model performmance."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "yNFE5bmpk2xo"
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "W2dZjgH0Yxok"
+   },
+   "source": [
+    "## Model 5"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "x9H_G0rzdwC9"
+   },
+   "source": [
+    "This time we will add more layers and dropout while using a different optimizer."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "9RlRQJOuYxop"
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "H-wDd0RIZQyI"
+   },
+   "source": [
+    "## Model 6"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "p0IOkrVWYxop"
+   },
+   "source": [
+    "Let's see how does the model performance change when the model gives higher importance to the minority class by adding class weights along with dropout layer and different optimizer."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "SV3-H6ckZQyK"
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "3O07XgkzY_ot"
+   },
+   "source": [
+    "# **Model Performance Comparison and Final Model Selection**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "mVYagrg9ZQyK"
+   },
+   "source": [
+    "Now, in order to select the final model, we will compare the performances of all the models for the training and validation sets."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "J4ZzDS8Cqe_b"
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "oA7JiQXgqy4b"
+   },
+   "source": [
+    "Now, let's check the performance of the final model on the test set."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "id": "AEcVdcG7q7xv"
+   },
+   "outputs": [],
+   "source": []
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "JdME3J172AN-"
+   },
+   "source": [
+    "# **Actionable Insights and Recommendations**"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "id": "qGX3aALmlWOm"
+   },
+   "source": [
+    "Write down some insights and business recommendations based on your observations."
+   ]
+  }
+ ],
+ "metadata": {
+  "colab": {
+   "collapsed_sections": [
+    "9EaJ8AGwpM-2",
+    "x3-QehJxbp0t",
+    "4p9zp6bHfPOY",
+    "XPeJAS5bfUOj",
+    "v_-uuGqH-qTt",
+    "xxhpZv9y-qTw",
+    "4cVx5kZHbp02",
+    "DhPuzWO7hmV8",
+    "Lv7Bs8aUbp07",
+    "lRrYccqLJKXi",
+    "Bp8vC9MZbp09",
+    "OzOa9FGA6WtG",
+    "czwxDIZNccQL",
+    "4fI98GOV0pTY",
+    "2tlVEbIWKb6T",
+    "grQ6pRK1WZtr",
+    "iQhdyBg0OJWQ",
+    "83ryNh6qVVPm",
+    "dPAuEVDzX0qL",
+    "W2dZjgH0Yxok",
+    "H-wDd0RIZQyI",
+    "3O07XgkzY_ot",
+    "JdME3J172AN-"
+   ],
+   "provenance": []
+  },
+  "kernelspec": {
+   "display_name": "Python [conda env:base] *",
+   "language": "python",
+   "name": "conda-base-py"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
