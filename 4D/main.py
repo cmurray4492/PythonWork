@@ -11,3 +11,8 @@ Learning Objectives:
 - Explore consciousness and perception limitations
 - Apply mathematical transformations and data analysis
 """
+import random
+import math 
+import time
+
+from datetime import datetime
