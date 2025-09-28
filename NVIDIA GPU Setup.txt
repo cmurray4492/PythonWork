@@ -22,6 +22,6 @@ Step 3: Run all commands one by one
 - python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
 - pip install opencv-python Pillow scikit-image albumentations
 - pip install pandas matplotlib seaborn scikit-learn
-- pip install jupyter notebookpip uninstall numpy
+- pip install jupyter notebook
 - pip install tqdm requests tensorboard
 - python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
