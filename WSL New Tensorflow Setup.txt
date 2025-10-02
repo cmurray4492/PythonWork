@@ -1,0 +1,27 @@
+
+Learn how to install TensorFlow with GPU support on Windows 11 using WSL2. This step-by-step tutorial shows you how to setup TensorFlow GPU, install CUDA, and configure Ubuntu on Windows for machine learning and deep learning projects.
+
+🎯 What you'll learn:
+Install WSL2 Ubuntu on Windows 11
+Setup TensorFlow with GPU acceleration
+Install tensorflow[and-cuda] package
+Configure NVIDIA CUDA drivers
+Create Python virtual environment
+Verify GPU detection in TensorFlow
+Install JupyterLab for data science
+
+📋 Commands used:
+wsl --install -d Ubuntu
+wsl --set-default Ubuntu
+sudo apt update && sudo apt upgrade -y
+python3 -m venv ml
+source ml/bin/activate
+pip install tensorflow[and-cuda]
+python3 -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+
+🔗 Links:
+TensorFlow installation guide: https://www.tensorflow.org/install/pi...
+NVIDIA drivers: https://www.nvidia.com/en-us/drivers/...
+CUDA WSL2 setup: https://docs.nvidia.com/cuda/wsl-user...
+
+Perfect for machine learning beginners, data scientists, and AI developers who want to run TensorFlow models with GPU acceleration on Windows without dual boot.
