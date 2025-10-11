@@ -163,7 +163,6 @@ pip-selfcheck.json
 *.jpg
 
 # Data files
-Data/ 
 MNIST/
 
 # End of https://www.toptal.com/developers/gitignore/api/venv,django
