@@ -7,7 +7,8 @@ WORKDIR /app
 COPY . .
 
 # Install dependencies from the requirements file without using cache to reduce image size
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+# RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 # Define the command to start the application using Gunicorn with 4 worker processes
 CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:7860", "app:superkart_api"]
+# CMD ["streamlit", "run", "appa.py", "--server.address", "0.0.0.0", "--server.port", "7860"]
