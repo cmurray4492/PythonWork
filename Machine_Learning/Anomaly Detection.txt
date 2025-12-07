@@ -1,0 +1,8 @@
+from pyod.models.iforest import IForest
+import numpy as np
+
+X = np.random.randn(200, 3)
+clf = IForest()
+clf.fit(X)
+
+print(clf.labels_)  # 0: normal, 1: anomaly

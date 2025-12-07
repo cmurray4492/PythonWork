@@ -1,0 +1,10 @@
+import featuretools as ft
+
+es = ft.EntitySet(id='customers')
+es = es.add_dataframe(dataframe_name='sales', dataframe=df, index='id')
+
+features, labels = ft.dfs(entityset=es,
+                          target_dataframe_name='sales',
+                          max_depth=2)
+
+print(features.head())

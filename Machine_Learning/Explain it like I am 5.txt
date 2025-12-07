@@ -1,0 +1,5 @@
+import eli5
+from eli5.sklearn import PermutationImportance
+
+perm = PermutationImportance(model).fit(X, y)
+eli5.show_weights(perm, feature_names=X.columns.tolist())

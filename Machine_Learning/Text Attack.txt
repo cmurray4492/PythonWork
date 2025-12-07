@@ -1,0 +1,10 @@
+from textattack.attack_recipes import TextFoolerJin2019
+from textattack.models.wrappers import HuggingFaceModelWrapper
+import transformers
+
+model = transformers.AutoModelForSequenceClassification.from_pretrained("bert-base-uncased")
+tokenizer = transformers.AutoTokenizer.from_pretrained("bert-base-uncased")
+
+wrapper = HuggingFaceModelWrapper(model, tokenizer)
+attack = TextFoolerJin2019.build(wrapper)
+attack.attack_dataset([("I love Python!", 1)])

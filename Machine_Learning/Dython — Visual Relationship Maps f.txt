@@ -1,0 +1,9 @@
+Dython — Visual Relationship Maps for Your Dataset
+Correlation matrices are cute.
+But dython gives you actual insight.
+
+from dython.nominal import associations
+import pandas as pd
+
+df = pd.read_csv("marketing_data.csv")
+associations(df, figsize=(12,10))
