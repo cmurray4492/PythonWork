@@ -33,3 +33,23 @@ bins = [0, 1980, 1990, 2000, 2010]
 labels = ['Before 80s', '80s', '90s', '2000s']
 cust['DOB_Binned'] = pd.cut(cust['Year'], bins=bins, labels=labels)
 cust.info()  # to verify changes
+
+
+# np.where to convert yes/no column to 1 and 0
+# Can be used on various binary columns with adjustments
+'''
+customers['Discount'] = np.where(customers['Discount'] == 'Yes', 1, 0)
+
+'''
+
+# Dummy Variables - Categorical to numeric
+'''
+dummies_edu = pd.get_dummies(customers['Education Level']).astype(int).drop_first=True
+
+# Combine tables
+customers = pd.concat([customers, dunniues_edu], axis=1)
+
+# drop educations field
+customers = customers.drop(columns=['Education Level'])
+
+'''
